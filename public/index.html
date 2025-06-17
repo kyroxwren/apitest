@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Webhook API Tester</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2em;
+      background: #111;
+      color: #eee;
+    }
+    input, button {
+      padding: 0.5em;
+      margin-bottom: 1em;
+      width: 100%;
+      font-size: 1em;
+      border-radius: 4px;
+      border: none;
+    }
+    button {
+      background: #00aaff;
+      color: white;
+      cursor: pointer;
+    }
+    pre {
+      background: #222;
+      padding: 1em;
+      border-radius: 6px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+  <h1>Webhook API Validator</h1>
+  <form id="tester-form">
+    <label for="email">Your Email:</label><br>
+    <input type="email" id="email" required><br>
+
+    <label for="url">Your API Endpoint URL:</label><br>
+    <input type="text" id="url" required><br>
+
+    <button type="submit">Test API</button>
+  </form>
+
+  <h2>Result:</h2>
+  <pre id="output">Waiting for test...</pre>
+
+  <script>
+    document.getElementById("tester-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const url = document.getElementById("url").value;
+      const output = document.getElementById("output");
+
+      const testUrl = `https://yhxzjyykdsfkdrmdxgho.supabase.co/functions/v1/junior-dev?url=${encodeURIComponent(url)}&email=${encodeURIComponent(email)}`;
+
+      output.textContent = "Testing...";
+
+      try {
+        const res = await fetch(testUrl);
+        const result = await res.text();
+        output.textContent = result;
+      } catch (err) {
+        output.textContent = "Error: " + err.message;
+      }
+    });
+  </script>
+</body>
+</html>
