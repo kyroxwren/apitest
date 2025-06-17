@@ -1,15 +1,8 @@
 {
-  "name": "webhook-processor-api",
+  "name": "apitest",
   "version": "1.0.0",
-  "description": "API endpoint that processes webhook data by sorting string characters alphabetically",
-  "main": "index.js",
+  "description": "API endpoint that processes webhook data",
   "scripts": {
-    "dev": "vercel dev",
-    "build": "vercel build",
-    "deploy": "vercel --prod"
-  },
-  "dependencies": {},
-  "engines": {
-    "node": ">=14.x"
+    "build": "echo 'Build complete - API ready'"
   }
 }
