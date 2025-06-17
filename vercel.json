@@ -1,10 +1,13 @@
 {
-  "version": 2,
-  "builds": [
-    { "src": "api/sort.js", "use": "@vercel/node" }
-  ],
-  "routes": [
-    { "src": "/api/sort", "dest": "api/sort.js" },
-    { "src": "/(.*)", "dest": "/public/index.html" }
+  "functions": {
+    "api/process.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/process",
+      "destination": "/api/process.js"
+    }
   ]
 }
